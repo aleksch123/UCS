@@ -22,13 +22,13 @@ public void cityComp(String cityName) throws InterruptedException {
             .selectTenDays()
             .withCity(cityName)
             .getTempList();
-    System.out.println(gmList);
+    System.out.println("Температура "+cityName+" от GisMeteo "+gmList);
 
     app.goTo().ya();
     List<String>yaList=app.yaPage()
             .withCity(cityName)
             .getTempList();
-    System.out.println(yaList);
+    System.out.println("Температура "+cityName+" от Yandex "+yaList);
 
     Assert.assertEquals(gmList,yaList);
 
