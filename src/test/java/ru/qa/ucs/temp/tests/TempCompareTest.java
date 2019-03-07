@@ -11,7 +11,7 @@ public class TempCompareTest extends TestBase {
 @DataProvider(name = "cities")
 
 public static Object[] params() {
-    return new Object[] {  "Москва","Омск","Якутск" };
+    return new Object[] {  "Москва","Новосибирск","Владивосток" };
 }
 
 @Test(dataProvider = "cities")
@@ -22,11 +22,13 @@ public void cityComp(String cityName) throws InterruptedException {
             .selectTenDays()
             .withCity(cityName)
             .getTempList();
+    System.out.println(gmList);
 
     app.goTo().ya();
     List<String>yaList=app.yaPage()
             .withCity(cityName)
             .getTempList();
+    System.out.println(yaList);
 
     Assert.assertEquals(gmList,yaList);
 
